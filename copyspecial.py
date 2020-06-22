@@ -24,17 +24,11 @@ def get_special_paths(dirname):
     file_list = []
     # Get files from directory and open
     path_dir = os.listdir(dirname)
-    # for path in path_dir:
-    #     if os.path.isfile(os.path.join(dirname, path)):
-    #         file_list.append(path)
-    # for path in path_dir:
-    #     match = re.search(r"__(\w+)__", path)
-    #     if match:
-    #         special_paths.append(path)
+
     for fname in path_dir:
         match = re.search(r"__(\w+)__", fname)
         if match:
-            special_paths.append(fname)
+            special_paths.append(os.path.abspath(os.path.join(dirname, fname)))
     return special_paths
 
 
